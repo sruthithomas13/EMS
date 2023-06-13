@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'styles/edit.css')}}">
+<script src="https://kit.fontawesome.com/a1f42dd904.js" crossorigin="anonymous"></script>
+
+{%extends 'base.html'%}
+{%include 'navbar.html'%}
+{%block title%} Employee Management System {%endblock%}
+{%block content%}
+<body>
+<div class="container">
+  <header>Edit Employee Details</header>
+  <form action = "/edit-employee" method = 'POST'>
+    {% for employee in employeeDetails %}
+    <div class="form first">
+      <div class="details personal">
+          <span class="title">Personal Details</span>
+          <div class="fields">
+            <div class="input-field">
+                <label>Employee ID</label>
+                <input type="text" placeholder='{{ employee[0] }}' name= "emp_id" value = '{{ employee[0] }}'>
+            </div>
+
+              <div class="input-field">
+                  <label>First Name</label>
+                  <input type="text" placeholder="Enter first name" name= "first_name" value = '{{ employee[1] }}' required>
+              </div>
+
+              <div class="input-field">
+                  <label>Middle Name</label>
+                  <input type="text" placeholder="Enter middle name" name = 'middle_name' value = '{{ employee[2] }}'>
+              </div>
+
+              <div class="input-field">
+                  <label>Last Name</label>
+                  <input type="text" placeholder="Enter last name" name = 'last_name' value = '{{ employee[3] }}' required>
+              </div>
+
+              <div class="input-field">
+                  <label>Date of birth</label>
+                  <input type="date" placeholder="Enter employee dob" name = 'dob' value = '{{ employee[4] }}' required>
+              </div>
+
+              <div class="input-field">
+                  <label>Gender</label>
+                  <input type="text" placeholder="Enter employee gender" name = 'gender' value = '{{ employee[5] }}' required>
+              </div>
+
+              <div class="input-field">
+                  <label>Email</label>
+                  <input type="email" placeholder="Enter employee email" name = 'email' value = '{{ employee[6] }}' required>
+              </div>
+
+
+              <div class="input-field">
+                  <label>Contact number</label>
+                  <input type="text" placeholder="Enter employee contact no." name = 'contact_no'  value = '{{ employee[8] }}'required>
+              </div>
+          </div>
+
+          <div class="details employee">
+              <span class="title">Employee Details</span>
+              <div class="fields">
+                
+            
+              <div class="input-field">
+                  <label>Department</label>
+                  <select id ='dept-names' name = 'dept_id' value = '{{ employee[11] }}' required>
+                      {%for details in departmentDetails%}
+                      <option  value = {{details[1]}} selected>{{details[0]}}</option>
+                      {%endfor%}
+                  </select>
+              </div>
+
+              <div class="input-field">
+                  <label>Designation</label>
+                  <select id ='desgn-names' name = 'designation_id' value = '{{ employee[12] }}' required>
+                      {%for values in designationDetails%}
+                      {% set final_name = values[0].replace("_"," ")%}
+                      <option  value = {{values[1]}}>{{final_name}}</option>
+                      {%endfor%}
+                  </select>
+              </div>
+
+              <div class="input-field">
+                  <label>Salary</label>
+                  <input type="text" placeholder="Enter employee salary" name = 'salary' value = '{{ employee[9] }}' required>
+              </div>
+
+              <div class="input-field">
+                  <label>Date of joining</label>
+                  <input type="date" placeholder="Enter employee doj" name = 'doj' value = '{{ employee[10] }}' required>
+              </div>
+          </div>
+
+          <div class="details-access">
+            <span class="title">Employee Onboarding</span>
+            <div class="fields">
+
+            {% for employee in employeeDetails %}
+            <form action="/edit-employee" method="POST">
+
+                {%if employee[13] == "Completed"%}
+                <div class="check-field">
+                    <label>Orientation</label>
+                    <input type="checkbox" id="orientation" name = 'orientation' value="Pending" class="green-checked" checked>
+                </div>
+                {%else%}
+                <div class="check-field">
+                    <label>Orientation</label>
+                    <input type="checkbox" id="orientation" name = 'orientation' value="{{employee[13]}}">
+                </div>
+                {%endif%}
+                
+                {%if employee[14] == "Completed"%}
+                <div class="check-field">
+                    <label>Training</label>
+                    <input type="checkbox" id="training" name = 'training' value="Pending" class="green-checked" checked>
+                </div>
+                {%else%}
+                <div class="check-field">
+                    <label>Training</label>
+                    <input type="checkbox" id="training" name = 'training' value="{{employee[14]}}">
+                </div>
+                {%endif%}
+
+                {%if employee[15] == "Completed"%}
+                <div class="check-field">
+                    <label>Credentials</label>
+                    <input type="checkbox" id="credentials" name = 'credentials' value="Pending" class="green-checked" checked>
+                </div>
+                {%else%}
+                <div class="check-field">
+                    <label>Credentials</label>
+                    <input type="checkbox" id="credentials" name = 'credentials' value="{{employee[15]}}">
+                </div>
+                {%endif%}
+
+                {%if employee[16] == "Completed"%}
+                <div class="check-field">
+                    <label>Equipment</label>
+                    <input type="checkbox" id="equipment" name = 'equipment' value="Pending" class="green-checked" checked>
+                </div>
+                {%else%}
+                <div class="check-field">
+                    <label>Equipment</label>
+                    <input type="checkbox" id="equipment" name = 'equipment' value="{{employee[16]}}">
+                </div>
+                {%endif%}
+            </form>
+            {%endfor%}
+        </div>
+    
+        </div>
+    <div class="btn-field">
+        <button type="submit" name="action" id = 'editForm' value ="edit" onclick="showAlert()">Save</button>
+    </div>
+    {%endfor%}
+  </form>
+</div>
+<script>
+    function showAlert(){
+        alert("Employee details successfully modified!")
+    }
+</script>
+</body>
+
+{%endblock%}

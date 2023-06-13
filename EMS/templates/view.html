@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block title%} Employee Management System {%endblock%}
+{%block content%}
+{%include 'navbar.html'%}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'styles/view.css')}}">
+<script src="https://kit.fontawesome.com/a1f42dd904.js" crossorigin="anonymous"></script>
+<div class="box">
+  <form action="/view-specific-employee" method = 'POST'>
+      <input type="text" class="input" onmouseout="this.value = ''; this.blur();" name = 'emp_id'>
+      <button type = 'submit' name = 'action' value = 'view'><b>View</b></button>
+  </form>
+</div>
+
+{% for employee in employees %}
+<div class="container">
+  <div class="name-container">
+    <h3>{{ employee[1] }} {{ employee[2] }} {{ employee[3] }}</h3>
+  </div>
+  <div class="designation-container">
+    <h4>{{ employee[12].replace("_"," ") }}</h4>
+  </div>
+  <div class="left-column">
+    <p>ID</p>
+    <p>DOB</p>
+    <p>Gender</p>
+    <p>Email</p>
+    <p>Contact No.</p>
+    <p>Department</p>
+    <p>Salary</p>
+    <p>DOJ</p>
+    <p>Orientation</p>
+    <p>Training</p>
+    <p>Credentials</p>
+    <p>Equipment</p>
+  </div>
+  <div class="right-column">
+    <p>{{ employee[0] }}</p>
+    <p>{{ employee[4] }}</p>
+    <p>{{ employee[5] }}</p>
+    <p>{{ employee[6] }}</p>
+    <p>{{ employee[8] }}</p>
+    <p>{{ employee[11] }}</p>
+    <p>{{ employee[9] }}</p>
+    <p>{{ employee[10] }}</p>
+    <p>{{ employee[13] }}</p>
+    <p>{{ employee[14] }}</p>
+    <p>{{ employee[15] }}</p>
+    <p>{{ employee[16] }}</p>
+  </div>
+  <div class="delete-button">
+  <form action="/view-employee" method = 'POST'>
+    <input type ="text" name='emp_id' value="{{ employee [0]}}" hidden>
+    <button type = 'submit' name = 'action' value = 'delete' onclick="showAlert()"><b>Delete</b></button>
+  </form>
+</div>
+
+<div class="edit-button">
+  <form action="/edit-employee" method = 'POST'>
+    <input type ="text" name='emp_id' value="{{ employee [0]}}" hidden>
+    <button type = 'submit' name = 'action' value = 'view'><b>Edit</b></button>
+  </form>
+</div>
+</div>
+{% endfor %}
+{%endblock%}

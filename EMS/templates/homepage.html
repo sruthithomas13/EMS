@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'styles/homepage.css')}}">
+
+{%extends 'base.html'%}
+{%include 'navbar.html'%}
+{%block title%} Employee Management System {%endblock%}
+{%block content%}
+
+<div class="head">
+    <div class="text-box">
+        <h1>EMS</h1>
+        <p>EMS is an employee management system that facilitates 
+            and streamlines the process of on-boarding and data management of employees.
+            It provides a repository for storing, accessing, contacting and deleting employee records.
+            Find out more on how to administer the system.</p>
+    </div>
+</div>
+{%endblock%}

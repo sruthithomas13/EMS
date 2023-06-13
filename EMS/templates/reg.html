@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'styles/reg1.css')}}">
+
+{%extends 'base.html'%}
+{%block title%} Employee Management System {%endblock%}
+{%block content%}
+{%include 'navbar.html'%}
+    <body>
+        <div class="container">
+            <header>New Employee Details</header>
+            <form action="/add-employee" method = "POST">
+                <div class="form first">
+                    <div class="details personal">
+                        <span class="title">Personal Details</span>
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>First Name</label>
+                                <input type="text" placeholder="Enter first name" name = 'first_name' required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Middle Name</label>
+                                <input type="text" placeholder="Enter middle name" name = 'middle_name'>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="Enter last name" name = 'last_name' required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date of birth</label>
+                                <input type="date" placeholder="Enter employee dob" name = 'dob' required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Gender</label>
+                                <input type="text" placeholder="Enter employee gender" name = 'gender' required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Email</label>
+                                <input type="email" placeholder="Enter employee email" name = 'email' required>
+                            </div>
+
+
+                            <div class="input-field">
+                                <label>Contact number</label>
+                                <input type="text" placeholder="Enter employee contact no." name = 'contact_no' required>
+                            </div>
+                        </div>
+
+                        <div class="details employee">
+                            <span class="title">Employee Details</span>
+                            <div class="fields">
+
+                            <div class="input-field">
+                                <label>Department</label>
+                                <select id ='dept-names' name = 'dept_id' required>
+                                    {%for details in departmentDetails%}
+                                    <option  value = {{details[1]}}>{{details[0]}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Designation</label>
+                                <select id ='desgn-names' name = 'designation_id' enctype="multipart/form-data" required>
+                                    {%for values in designationDetails%}
+                                    {% set final_name = values[0].replace("_"," ")%}
+                                    <option  value = {{values[1]}}>{{final_name}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Salary</label>
+                                <input type="text" placeholder="Enter employee salary" name = 'salary' required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date of joining</label>
+                                <input type="date" placeholder="Enter employee doj" name = 'doj' required>
+                            </div>
+
+                        </div>
+                    
+                </div>
+                <div class="btn-field">
+                    <button type="submit" name="action" value ="add">Submit</button>
+                </div>
+            </form>
+        </div>
+    </body>
+{%endblock%}
