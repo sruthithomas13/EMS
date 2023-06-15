@@ -140,3 +140,8 @@ form .fields .input-field{
     cursor: pointer;
 
 }
+
+.required-field {
+    color: red;
+    margin-left: 3px;
+  }
