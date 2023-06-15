@@ -14,8 +14,8 @@
                         <span class="title">Personal Details</span>
                         <div class="fields">
                             <div class="input-field">
-                                <label>First Name</label>
-                                <input type="text" placeholder="Enter first name" name = 'first_name' required>
+                                <label>First Name<span class="required-field">*</span></label>
+                                <input type="text" name = 'first_name' required>
                             </div>
 
                             <div class="input-field">
@@ -24,28 +24,28 @@
                             </div>
 
                             <div class="input-field">
-                                <label>Last Name</label>
+                                <label>Last Name<span class="required-field">*</span></label>
                                 <input type="text" placeholder="Enter last name" name = 'last_name' required>
                             </div>
 
                             <div class="input-field">
-                                <label>Date of birth</label>
+                                <label>Date of birth<span class="required-field">*</span></label>
                                 <input type="date" placeholder="Enter employee dob" name = 'dob' required>
                             </div>
 
                             <div class="input-field">
-                                <label>Gender</label>
+                                <label>Gender<span class="required-field">*</span></label>
                                 <input type="text" placeholder="Enter employee gender" name = 'gender' required>
                             </div>
 
                             <div class="input-field">
-                                <label>Email</label>
+                                <label>Email<span class="required-field">*</span></label>
                                 <input type="email" placeholder="Enter employee email" name = 'email' required>
                             </div>
 
 
                             <div class="input-field">
-                                <label>Contact number</label>
+                                <label>Contact number<span class="required-field">*</span></label>
                                 <input type="text" placeholder="Enter employee contact no." name = 'contact_no' required>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                             <div class="fields">
 
                             <div class="input-field">
-                                <label>Department</label>
+                                <label>Department<span class="required-field">*</span></label>
                                 <select id ='dept-names' name = 'dept_id' required>
                                     {%for details in departmentDetails%}
                                     <option  value = {{details[1]}}>{{details[0]}}</option>
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="input-field">
-                                <label>Designation</label>
+                                <label>Designation<span class="required-field">*</span></label>
                                 <select id ='desgn-names' name = 'designation_id' enctype="multipart/form-data" required>
                                     {%for values in designationDetails%}
                                     {% set final_name = values[0].replace("_"," ")%}
@@ -74,12 +74,12 @@
                             </div>
 
                             <div class="input-field">
-                                <label>Salary</label>
+                                <label>Salary<span class="required-field">*</span></label>
                                 <input type="text" placeholder="Enter employee salary" name = 'salary' required>
                             </div>
 
                             <div class="input-field">
-                                <label>Date of joining</label>
+                                <label>Date of joining<span class="required-field">*</span></label>
                                 <input type="date" placeholder="Enter employee doj" name = 'doj' required>
                             </div>
 
